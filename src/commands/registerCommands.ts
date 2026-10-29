@@ -1,12 +1,9 @@
 import * as vscode from 'vscode';
-import { AssetStorage } from '../assets/AssetStorage';
-import { createSample } from './sample/sampleCommand';
+import { createHelloWorldCommand } from './helloWorld/helloWorldCommand';
 
-export function registerCommands(
-  asset: AssetStorage
-): vscode.Disposable {
+export function registerCommands(): vscode.Disposable {
   return vscode.Disposable.from(
     // TODO: [TEMPLATE] 以下にコマンドを列挙します
-    createSample(asset)
+    createHelloWorldCommand()
   );
 };

@@ -1,8 +1,7 @@
 import * as process from "node:process";
 import * as vscode from "vscode";
 
-// TODO: [TEMPLATE] ↓ 他の拡張機能と被らないようにしてください
-const TASK_TYPE = "extension-template.b724f99c-224d-4b47-824b-3af95d45e921.ShellScript";
+const TASK_TYPE = "RunPowerShellViaYaml.ShellScript";
 
 export async function runPowerShellScript(
   scriptUri: vscode.Uri,
