@@ -1,5 +1,4 @@
 const esbuild = require("esbuild");
-const { copy } = require("esbuild-plugin-copy");
 
 const production = process.argv.includes('--production');
 const watch = process.argv.includes('--watch');
@@ -40,13 +39,7 @@ async function main() {
 		logLevel: 'silent',
 		plugins: [
 			/* add to the end of plugins array */
-			esbuildProblemMatcherPlugin,
-			copy({
-				assets: {
-					from: ['./powerShell/**/*'],
-					to: ['./powerShell'],
-				},
-			}),
+			esbuildProblemMatcherPlugin
 		],
 	});
 	if (watch) {
