@@ -1,11 +1,12 @@
 import * as vscode from "vscode";
 import { parseYaml } from "../../lib/parseYaml";
 import { runPowerShellScript } from "../../lib/powerShellRunner";
-import { validateYamlData } from "../../lib/validateYamlData";
-import { yamlSchema } from "./yaml.schema";
+import { withValidatedYamlData } from "../../lib/validateYamlData";
+import { AppConfig } from "../../config";
 
 
-const YAML_PATH = "2_Env/41_VsCode/62_ExMak/scripts/hello-world.yaml";
+const YAML_PATH = AppConfig.yaml.path;
+const yamlSchema = AppConfig.yaml.schema;
 
 
 const runHelloWorld = async (): Promise<void> => {
@@ -37,7 +38,7 @@ const runHelloWorld = async (): Promise<void> => {
   const yamlUri = vscode.Uri.joinPath(aITUri[0], YAML_PATH);
   const yamlData = await parseYaml(yamlUri);
 
-  return await validateYamlData(
+  return await withValidatedYamlData(
     yamlData,
     yamlSchema,
 
